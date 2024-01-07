@@ -12,6 +12,10 @@ app.use(cors());
 require("./db/conn");
 const Students = require("./models/Students");
 
+app.get("/", (req, res) => {
+    res.send("This is a Node JS server")
+})
+
 //login and signup api
 app.get("/login", async (req, res) => {
     try {

@@ -17,16 +17,18 @@ app.get("/", (req, res) => {
 })
 
 //login and signup api
-app.get("/login", async (req, res) => {
+app.post("/login", async (req, res) => {
     try {
+        console.log("req.body", req.body)
         const { email, password } = req.body;
         const Student = await Students.findOne({ email });
+        console.log("Student", Student)
         if (!Student) {
-            return res.status(401).json({ error: 'Authentication failed' });
+            return res.status(401).json({ error: 'Authentication failed 1111' });
         }
         const passwordMatch = await bcrypt.compare(password, Student.password);
         if (!passwordMatch) {
-            return res.status(401).json({ error: 'Authentication failed' });
+            return res.status(401).json({ error: 'Authentication failed 222' });
         }
         const token = jwt.sign({ studentId: Student._id }, process.env.SECRET_KEY , {
             expiresIn: '48h',

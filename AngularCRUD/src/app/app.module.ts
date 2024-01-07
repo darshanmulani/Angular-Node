@@ -42,6 +42,11 @@ import { LogInComponent } from './Components/log-in/log-in.component';
 import { RegistrationComponent } from './Components/registration/registration.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './Components/Sections/home/home.component';
+import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { HeaderComponent } from './Components/Sections/header/header.component';
+import { FooterComponent } from './Components/Sections/footer/footer.component';
 
 const materialModules = [
   CdkTreeModule,
@@ -82,14 +87,19 @@ const materialModules = [
   declarations: [
     AppComponent,
     LogInComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    HomeComponent,
+    PageNotFoundComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     ReactiveFormsModule,
     ...materialModules,
-    NgbModule
+    NgbModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

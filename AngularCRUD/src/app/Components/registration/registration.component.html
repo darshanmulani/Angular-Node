@@ -1,0 +1,91 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center mb-5">
+            <h2 class="heading-section">Registration Form</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-md-12 col-lg-10">
+            <div class="wrap">
+                <div class="signup-wrap p-4 p-md-5">
+                    <div class="d-flex">
+                        <div class="w-100">
+                            <h3 class="mb-4">Sign Up</h3>
+                        </div>
+                    </div>
+                    <form class="signin-form" [formGroup]="registrationform" (ngSubmit)="onSubmit()">
+                        <div class="form-group mb-3">
+                            <label class="label" for="name">Username</label>
+                            <input type="text" class="form-control" placeholder="Username" required
+                                formControlName="username">
+                            <div *ngIf="getControl('username')?.errors && getControl('username')?.touched && submitted">
+                                <small class="text-danger" *ngIf="getControl('username')?.errors?.['required']">Username
+                                    field is Required</small>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="email">Email</label>
+                            <input type="email" class="form-control" placeholder="Email Address" required
+                                formControlName="email">
+                            <div *ngIf="getControl('email')?.errors && getControl('email')?.touched">
+                                <small class="text-danger" *ngIf="getControl('email')?.errors?.['required']">Email field
+                                    is Required</small>
+                                <small class="text-danger" *ngIf="getControl('email')?.errors?.['pattern']">Please enter
+                                    a valid email.</small>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="gender">gender</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="male" id="male"
+                                    formControlName="gender">
+                                <label class="form-check-label" for="male">
+                                    Male
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" value="female" id="female"
+                                    formControlName="gender">
+                                <label class="form-check-label" for="female">
+                                    Female
+                                </label>
+                            </div>
+                            <div *ngIf="getControl('gender')?.errors && submitted">
+                                <small class="text-danger" *ngIf="getControl('gender')?.errors?.['required']">Please
+                                    check the Gender</small>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="password">Password</label>
+                            <input type="password" class="form-control" placeholder="Password" required
+                                formControlName="password">
+                            <div *ngIf="getControl('password')?.errors && getControl('password')?.touched">
+                                <small class="text-danger" *ngIf="getControl('password')?.errors?.['required']">Password
+                                    field is requird</small>
+                                <small class="text-danger"
+                                    *ngIf="getControl('password')?.errors?.['minlength'] || getControl('password')?.errors?.['maxlength']">Password
+                                    should be minimum 8 and maximum 32 characters long.</small>
+                            </div>
+                        </div>
+                        <div class="form-group mb-3">
+                            <label class="label" for="password">Confirm Password</label>
+                            <input type="password" class="form-control" placeholder="Password" required>
+                            <div
+                                *ngIf="getControl('confirmpassword')?.errors && getControl('confirmpassword')?.touched">
+                                <small class="text-danger"
+                                    *ngIf="getControl('password')?.errors?.['required'] && getControl('password')?.errors?.['PasswordNoMatch']">Password
+                                    field is requird</small>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sign
+                                Up</button>
+                        </div>
+                    </form>
+                    <p class="text-center">Already Register? <a data-toggle="tab" [routerLink]="['/login']">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -47,6 +47,7 @@ import { HomeComponent } from './Components/Sections/home/home.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { HeaderComponent } from './Components/Sections/header/header.component';
 import { FooterComponent } from './Components/Sections/footer/footer.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const materialModules = [
   CdkTreeModule,
@@ -99,7 +100,8 @@ const materialModules = [
     ReactiveFormsModule,
     ...materialModules,
     NgbModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

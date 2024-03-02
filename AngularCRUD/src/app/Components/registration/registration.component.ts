@@ -32,19 +32,17 @@ export class RegistrationComponent {
 
   onSubmit() {
     this.submitted = true;
-    console.log("this.registrationform.value", this.registrationform.value);
     if (this.registrationform.invalid) {
       this.registrationform.markAllAsTouched();
       return;
     }
-
-    console.log("Value", this.registrationform.value)
-
-    this.srv.registration(this.registrationform.value).subscribe((res)=>{
-      console.log("rsesss",res)
+    
+    const formData = { ...this.registrationform.value, role: "student", approve: false };
+    
+    this.srv.registration(formData).subscribe((res) => {
+      this.registrationform.reset()
+      this.router.navigate(['/login'])
     })
-    this.registrationform.reset()
-    this.router.navigate(['/login'])
   }
 
 }

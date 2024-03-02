@@ -19,6 +19,13 @@ const StudentsSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  role:{
+    type: String,
+    required: true,
+  },
+  approve:{
+    type: Boolean
+  },
   password: {
     type: String,
     min: 10,
